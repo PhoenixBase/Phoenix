@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phoenix#7163 Portfolio</title>
+    <style>
+        /* CSS STYLES */
+        :root {
+            --primary: #ff4d00;
+            --bg: #0a0a0a;
+            --card-bg: #161616;
+            --text: #ffffff;
+            --text-dim: #888;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin: 0;
+            color: var(--primary);
+            text-shadow: 0 0 20px rgba(255, 77, 0, 0.3);
+            letter-spacing: -1px;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(255, 77, 0, 0.2); }
+            to { text-shadow: 0 0 30px rgba(255, 77, 0, 0.6); }
+        }
+
+        .status-box {
+            background: rgba(255, 77, 0, 0.05);
+            border: 1px solid rgba(255, 77, 0, 0.2);
+            padding: 15px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .status-text {
+            margin: 0;
+            font-weight: 500;
+            color: #ff9d70;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border: 1px solid #333;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 16px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            border: 1px solid #222;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #222;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            filter: brightness(1.2);
+            box-shadow: 0 0 20px rgba(255, 77, 0, 0.4);
+        }
+
+        .btn.success {
+            background: #28a745;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Phoenix#7163</h1>
+            <div class="status-box">
+                <p class="status-text">ggs tonight 🔥<br>new setup finally complete</p>
+            </div>
+        </header>
+
+        <img class="hero-image" src="./desktop.png" alt="Workstation Setup">
+
+        <section>
+            <h2 class="section-title"><span>📂</span> Portfolio Work</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Community Architecture</h3>
+                    <p>Designed and scaled Discord servers for high-traffic creators, focusing on engagement hooks and security.</p>
+                </div>
+                <div class="card">
+                    <h3>Visual Identity</h3>
+                    <p>Creating custom streaming graphics and overlays that pop. Focused on high contrast and motion design.</p>
+                </div>
+                <div class="card">
+                    <h3>Bot Development</h3>
+                    <p>Clean, efficient code using Node.js to automate the boring stuff so you can focus on the game.</p>
+                </div>
+                <div class="card">
+                    <h3>Digital Strategy</h3>
+                    <p>Helping brands bridge the gap between traditional content and the gaming community.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p style="color: var(--text-dim); margin-bottom: 20px;">Want to collaborate?</p>
+            <button class="btn" id="copyBtn">Copy Discord Handle</button>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('copyBtn').addEventListener('click', function() {
+            const handle = "Phoenix#7163";
+            
+            navigator.clipboard.writeText(handle).then(() => {
+                const btn = this;
+                const originalText = btn.innerText;
+                
+                btn.innerText = "Copied!";
+                btn.classList.add('success');
+                
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.remove('success');
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
